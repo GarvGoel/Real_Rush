@@ -16,7 +16,7 @@ public class EnemyMovement : MonoBehaviour{
         print("Start Patroling");
        foreach(Waypoint waypoint in blocklist )
         {
-            print(waypoint.name);
+            //print(waypoint.name);
             gameObject.transform.position = waypoint.transform.position;
             
             yield return new WaitForSeconds(1f);

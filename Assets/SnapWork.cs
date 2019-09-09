@@ -8,7 +8,7 @@ using UnityEngine;
 public class SnapWork : MonoBehaviour {
   
     
-     Vector3 SnapPos;
+     
     TextMesh textMesh;
     Waypoint waypoint;
 
@@ -27,17 +27,19 @@ public class SnapWork : MonoBehaviour {
 
     }
 
-    private void SnapToGrid()
+     void SnapToGrid()
     {
-        int gridSize = waypoint.GetGridSize();
-        SnapPos.x = Mathf.RoundToInt(transform.position.x / gridSize) * gridSize;
-        SnapPos.z = Mathf.RoundToInt(transform.position.z / gridSize) * gridSize;
-        transform.position = new Vector3(SnapPos.x, 0, SnapPos.z);
+
+       
+
+        transform.position = new Vector3(waypoint.GetGridPos().x, 0,waypoint.GetGridPos().y);
     }
+
+    
 
     private void UpdateLabel()
     {
-        string cordinates = SnapPos.x + "," + SnapPos.z;
+        string cordinates = waypoint.GetGridPos().x + "," + waypoint.GetGridPos().y;
         textMesh.text = cordinates;
         gameObject.name = "Cube(" + cordinates + ")";
     }
